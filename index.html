@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Del Ara Studio - Luxury Web Design &amp; SEO</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .font-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    
+    .main-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* Color Variables */
+    :root {
+      --emerald-900: #064e3b;
+      --emerald-800: #065f46;
+      --emerald-700: #047857;
+      --emerald-600: #059669;
+      --sage: #8fa88e;
+      --gold: #d4af37;
+      --cream: #faf8f3;
+      --ivory: #fffef9;
+      --charcoal: #1a1a1a;
+      --gray-800: #2d2d2d;
+    }
+    
+    /* Premium Gradients */
+    .gradient-emerald-dark {
+      background: linear-gradient(135deg, var(--emerald-900) 0%, var(--emerald-700) 50%, var(--charcoal) 100%);
+    }
+    
+    .gradient-emerald-soft {
+      background: linear-gradient(135deg, rgba(6, 78, 59, 0.05) 0%, rgba(4, 120, 87, 0.1) 100%);
+    }
+    
+    .gradient-dark-emerald {
+      background: linear-gradient(180deg, var(--charcoal) 0%, var(--emerald-900) 100%);
+    }
+    
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .glass-light {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Premium Shadows */
+    .shadow-premium {
+      box-shadow: 0 20px 60px rgba(6, 78, 59, 0.12), 0 8px 24px rgba(6, 78, 59, 0.08);
+    }
+    
+    .shadow-deep {
+      box-shadow: 0 30px 80px rgba(6, 78, 59, 0.15), 0 12px 32px rgba(6, 78, 59, 0.1);
+    }
+    
+    .shadow-subtle {
+      box-shadow: 0 4px 20px rgba(6, 78, 59, 0.06);
+    }
+    
+    /* Smooth Transitions */
+    .transition-premium {
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .transition-smooth {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Sticky Navigation */
+    .nav-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 248, 243, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(6, 78, 59, 0.08);
+    }
+    
+    /* Interactive Cards */
+    .card-interactive {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+    
+    .card-interactive:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 32px 80px rgba(6, 78, 59, 0.18);
+    }
+    
+    /* Icon Styles */
+    .icon-premium {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%);
+      box-shadow: 0 8px 24px rgba(4, 120, 87, 0.25);
+    }
+    
+    .icon-outline {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+    
+    /* Horizontal Scroll Section */
+    .horizontal-scroll {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) transparent;
+      padding-bottom: 20px;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+    
+    .horizontal-scroll > * {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    
+    /* Gold Accent Divider */
+    .gold-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+      margin: 24px 0;
+    }
+    
+    /* Typography Rhythm */
+    .editorial-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--gray-800);
+      font-weight: 400;
+    }
+    
+    /* Button Styles */
+    .btn-primary {
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(4, 120, 87, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(4, 120, 87, 0.4);
+    }
+    
+    .btn-secondary {
+      padding: 16px 40px;
+      background: transparent;
+      color: var(--emerald-900);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      border: 2px solid var(--emerald-900);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--emerald-900);
+      color: white;
+      transform: translateY(-4px);
+    }
+    
+    .btn-ghost {
+      padding: 12px 32px;
+      background: transparent;
+      color: var(--gold);
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 15px;
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-ghost:hover {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+    
+    /* Page Indicator */
+    .page-indicator {
+      position: fixed;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 50;
+    }
+    
+    .page-indicator-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(6, 78, 59, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .page-indicator-dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+    
+    @media (max-width: 768px) {
+      .page-indicator {
+        display: none;
+      }
+    }
+    
+    /* Subtle Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    /* Section Backgrounds */
+    .bg-cream {
+      background-color: var(--cream);
+    }
+    
+    .bg-ivory {
+      background-color: var(--ivory);
+    }
+    
+    .bg-charcoal {
+      background-color: var(--charcoal);
+    }
+    
+    /* Modal Overlay Effect */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 24px;
+    }
+    
+    .modal-overlay.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 24px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90%;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    /* Navigation Menu Styles */
+    .nav-menu {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+    
+    .nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--emerald-900);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    @media (max-width: 1024px) {
+      .nav-menu {
+        display: none;
+      }
+    }
+    
+    /* Grid Layouts */
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    
+    @media (max-width: 640px) {
+      .masonry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="main-wrapper bg-cream"><!-- Page Indicators -->
+   <div class="page-indicator">
+    <div class="page-indicator-dot active" data-page="home"></div>
+    <div class="page-indicator-dot" data-page="services"></div>
+    <div class="page-indicator-dot" data-page="work"></div>
+    <div class="page-indicator-dot" data-page="process"></div>
+    <div class="page-indicator-dot" data-page="contact"></div>
+   </div><!-- Sticky Navigation -->
+   <nav class="nav-sticky">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-11 h-11 gradient-emerald-dark rounded-2xl flex items-center justify-center shadow-premium">
+       <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+       </svg>
+      </div><span id="nav-studio-name" class="text-xl font-display" style="color: var(--emerald-900);">Del Ara Studio</span>
+     </div>
+     <div class="nav-menu"><a href="#home" class="nav-link active">Home</a> <a href="#services" class="nav-link">Services</a> <a href="#work" class="nav-link">Work</a> <a href="#process" class="nav-link">Process</a> <a href="#insights" class="nav-link">Insights</a>
+     </div><button id="nav-cta" class="btn-primary"> Start a project </button>
+    </div>
+   </nav><!-- Hero Section - Immersive Statement -->
+   <section id="home" class="relative overflow-hidden" style="padding: 120px 24px 100px;">
+    <div class="absolute inset-0 gradient-emerald-soft opacity-60"></div><!-- Abstract Background Elements -->
+    <div class="absolute top-20 right-10 w-96 h-96 rounded-full opacity-10" style="background: radial-gradient(circle, var(--emerald-700) 0%, transparent 70%);"></div>
+    <div class="absolute bottom-20 left-10 w-72 h-72 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
+    <div class="max-w-6xl mx-auto relative z-10"><!-- Eyebrow -->
+     <div class="inline-flex items-center gap-3 glass-light rounded-full px-5 py-2.5 mb-8">
+      <div class="w-2 h-2 rounded-full" style="background: var(--gold);"></div><span class="text-sm font-medium" style="color: var(--emerald-900);">Award-Winning Digital Studio</span>
+     </div><!-- Main Statement -->
+     <h1 id="hero-statement" class="font-display mb-8 fade-in-up" style="font-size: clamp(3rem, 8vw, 6.5rem); line-height: 1.05; color: var(--emerald-900); letter-spacing: -0.03em;">We build digital experiences that command attention</h1>
+     <p id="hero-subtitle" class="editorial-text max-w-3xl mb-12 fade-in-up" style="animation-delay: 0.2s; font-size: 22px; color: var(--gray-800);">Luxury web design and strategic SEO for brands that refuse to blend in. We craft precision, performance, and prestige into every pixel.</p><!-- CTA Group -->
+     <div class="flex flex-col sm:flex-row gap-5 mb-16 fade-in-up" style="animation-delay: 0.4s;"><button id="hero-cta-primary" class="btn-primary"> Start a project </button> <button id="hero-cta-secondary" class="btn-secondary"> View case studies </button>
+     </div><!-- Scroll Indicator -->
+     <div class="flex items-center gap-3 mt-20">
+      <div class="w-px h-16" style="background: linear-gradient(180deg, transparent 0%, var(--gold) 100%);"></div><span class="text-sm font-medium" style="color: var(--sage);">Scroll to explore</span>
+     </div>
+    </div>
+   </section><!-- Outcomes Section - Icon Rich -->
+   <section class="py-24 px-6 bg-ivory">
+    <div class="max-w-7xl mx-auto">
+     <div class="mb-16 max-w-3xl">
+      <div class="gold-divider"></div>
+      <h2 class="font-display mb-5" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; color: var(--emerald-900);">Three pillars of digital excellence</h2>
+      <p class="editorial-text" style="color: var(--gray-800);">We architect digital ecosystems that deliver measurable impact across visibility, credibility, and conversion.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Visibility -->
+      <div class="bg-white rounded-3xl p-10 card-interactive shadow-premium">
+       <div class="icon-premium mb-8">
+        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-3xl mb-4" style="color: var(--emerald-900);">Visibility</h3>
+       <p class="editorial-text mb-6" style="font-size: 16px;">Strategic SEO architecture that positions your brand at the apex of search results. We engineer organic dominance through technical precision.</p>
+       <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">Learn more</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+       </div>
+      </div><!-- Trust -->
+      <div class="bg-white rounded-3xl p-10 card-interactive shadow-premium">
+       <div class="icon-premium mb-8">
+        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-3xl mb-4" style="color: var(--emerald-900);">Trust</h3>
+       <p class="editorial-text mb-6" style="font-size: 16px;">Design systems that command respect from first impression. We build credibility through sophistication, consistency, and attention to detail.</p>
+       <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">Learn more</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+       </div>
+      </div><!-- Conversion -->
+      <div class="bg-white rounded-3xl p-10 card-interactive shadow-premium">
+       <div class="icon-premium mb-8">
+        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+       </div>
+       <h3 class="font-display text-3xl mb-4" style="color: var(--emerald-900);">Conversion</h3>
+       <p class="editorial-text mb-6" style="font-size: 16px;">Performance-optimized experiences engineered to transform visitors into clients. Every interaction is designed with intent and measured impact.</p>
+       <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">Learn more</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services Section - Modular & Detailed -->
+   <section id="services" class="py-24 px-6 gradient-dark-emerald">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid lg:grid-cols-2 gap-16 mb-20">
+      <div>
+       <div class="gold-divider"></div>
+       <h2 class="font-display mb-6 text-white" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1;">Services designed for impact</h2>
+      </div>
+      <div>
+       <p class="editorial-text text-white opacity-90" style="font-size: 18px;">We offer three core services, each meticulously crafted to elevate premium brands in the digital landscape. Every engagement is custom, strategic, and results-driven.</p>
+      </div>
+     </div><!-- Service Cards -->
+     <div class="space-y-6"><!-- Premium Web Design -->
+      <div class="glass rounded-3xl p-10 lg:p-12 transition-premium hover:bg-white hover:bg-opacity-10">
+       <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-2">
+         <div class="icon-outline">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+         </div>
+        </div>
+        <div class="lg:col-span-7">
+         <h3 class="font-display text-3xl mb-4 text-white">Premium Web Design</h3>
+         <p class="editorial-text text-white opacity-90 mb-6">Bespoke digital experiences that merge luxury aesthetics with performance-first development. We craft websites that are as intelligent as they are beautiful—optimized for speed, SEO, and conversions from day one.</p>
+         <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Custom Design Systems</span> <span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Responsive Architecture</span> <span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Performance Optimization</span>
+         </div>
+        </div>
+        <div class="lg:col-span-3 flex items-center justify-end"><button class="btn-ghost">Explore service</button>
+        </div>
+       </div>
+      </div><!-- Strategic SEO -->
+      <div class="glass rounded-3xl p-10 lg:p-12 transition-premium hover:bg-white hover:bg-opacity-10">
+       <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-2">
+         <div class="icon-outline">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+         </div>
+        </div>
+        <div class="lg:col-span-7">
+         <h3 class="font-display text-3xl mb-4 text-white">Strategic SEO</h3>
+         <p class="editorial-text text-white opacity-90 mb-6">Technical SEO architecture that drives sustainable organic growth. We don't chase algorithms—we build authority through strategic content, technical excellence, and a deep understanding of search behavior.</p>
+         <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Technical Audits</span> <span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Content Strategy</span> <span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Authority Building</span>
+         </div>
+        </div>
+        <div class="lg:col-span-3 flex items-center justify-end"><button class="btn-ghost">Explore service</button>
+        </div>
+       </div>
+      </div><!-- Brand Elevation -->
+      <div class="glass rounded-3xl p-10 lg:p-12 transition-premium hover:bg-white hover:bg-opacity-10">
+       <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-2">
+         <div class="icon-outline">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+         </div>
+        </div>
+        <div class="lg:col-span-7">
+         <h3 class="font-display text-3xl mb-4 text-white">Brand Elevation</h3>
+         <p class="editorial-text text-white opacity-90 mb-6">Cohesive digital identities that reflect sophistication and strategic thinking. From visual systems to messaging architecture, we refine every touchpoint to ensure your brand resonates with discerning audiences.</p>
+         <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Visual Identity</span> <span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Messaging Strategy</span> <span class="px-4 py-2 rounded-full text-sm border border-white border-opacity-30 text-white">Digital Presence</span>
+         </div>
+        </div>
+        <div class="lg:col-span-3 flex items-center justify-end"><button class="btn-ghost">Explore service</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Case Studies - Horizontal Scroll -->
+   <section id="work" class="py-24 px-6 bg-cream">
+    <div class="max-w-7xl mx-auto mb-12">
+     <div class="flex items-end justify-between mb-4">
+      <div>
+       <div class="gold-divider"></div>
+       <h2 class="font-display" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; color: var(--emerald-900);">Selected work</h2>
+      </div><button class="btn-secondary">View all projects</button>
+     </div>
+     <p class="editorial-text max-w-2xl">Case studies showcasing strategic thinking, creative execution, and measurable results for discerning brands.</p>
+    </div>
+    <div class="horizontal-scroll px-6 lg:px-12"><!-- Case Study 1 -->
+     <div class="w-[520px] bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+      <div class="h-72 gradient-emerald-dark flex items-center justify-center relative overflow-hidden">
+       <svg class="w-32 h-32 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+       </svg>
+       <div class="absolute top-6 right-6"><span class="glass-light px-4 py-2 rounded-full text-sm font-medium" style="color: var(--emerald-900);">Web Design</span>
+       </div>
+      </div>
+      <div class="p-8">
+       <h3 class="font-display text-3xl mb-3" style="color: var(--emerald-900);">Lumière Capital</h3>
+       <p class="editorial-text mb-6" style="font-size: 15px; color: var(--gray-800);">Complete digital transformation for a boutique investment firm. Refined brand identity, custom web platform, and strategic content architecture.</p>
+       <div class="flex items-center justify-between">
+        <div class="flex gap-4 text-sm">
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           340%
+          </div>
+          <div style="color: var(--sage);">
+           Organic Traffic
+          </div>
+         </div>
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           2.8x
+          </div>
+          <div style="color: var(--sage);">
+           Conversion Rate
+          </div>
+         </div>
+        </div>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">View case study</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div><!-- Case Study 2 -->
+     <div class="w-[520px] bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+      <div class="h-72 gradient-emerald-dark flex items-center justify-center relative overflow-hidden">
+       <svg class="w-32 h-32 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+       </svg>
+       <div class="absolute top-6 right-6"><span class="glass-light px-4 py-2 rounded-full text-sm font-medium" style="color: var(--emerald-900);">Brand &amp; SEO</span>
+       </div>
+      </div>
+      <div class="p-8">
+       <h3 class="font-display text-3xl mb-3" style="color: var(--emerald-900);">Atelier Noir</h3>
+       <p class="editorial-text mb-6" style="font-size: 15px; color: var(--gray-800);">Luxury e-commerce reimagined for a high-end fashion label. SEO-first architecture, editorial content strategy, and conversion-optimized checkout experience.</p>
+       <div class="flex items-center justify-between">
+        <div class="flex gap-4 text-sm">
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           520%
+          </div>
+          <div style="color: var(--sage);">
+           Revenue Growth
+          </div>
+         </div>
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           4.2x
+          </div>
+          <div style="color: var(--sage);">
+           Page Speed
+          </div>
+         </div>
+        </div>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">View case study</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div><!-- Case Study 3 -->
+     <div class="w-[520px] bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+      <div class="h-72 gradient-emerald-dark flex items-center justify-center relative overflow-hidden">
+       <svg class="w-32 h-32 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+       </svg>
+       <div class="absolute top-6 right-6"><span class="glass-light px-4 py-2 rounded-full text-sm font-medium" style="color: var(--emerald-900);">Full Service</span>
+       </div>
+      </div>
+      <div class="p-8">
+       <h3 class="font-display text-3xl mb-3" style="color: var(--emerald-900);">Vanguard Tech</h3>
+       <p class="editorial-text mb-6" style="font-size: 15px; color: var(--gray-800);">SaaS platform redesign with focus on enterprise credibility. Custom design system, technical SEO infrastructure, and automated lead generation.</p>
+       <div class="flex items-center justify-between">
+        <div class="flex gap-4 text-sm">
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           280%
+          </div>
+          <div style="color: var(--sage);">
+           Lead Generation
+          </div>
+         </div>
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           92
+          </div>
+          <div style="color: var(--sage);">
+           Performance Score
+          </div>
+         </div>
+        </div>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">View case study</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div><!-- Case Study 4 -->
+     <div class="w-[520px] bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+      <div class="h-72 gradient-emerald-dark flex items-center justify-center relative overflow-hidden">
+       <svg class="w-32 h-32 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+       </svg>
+       <div class="absolute top-6 right-6"><span class="glass-light px-4 py-2 rounded-full text-sm font-medium" style="color: var(--emerald-900);">Brand Strategy</span>
+       </div>
+      </div>
+      <div class="p-8">
+       <h3 class="font-display text-3xl mb-3" style="color: var(--emerald-900);">Essence Wellness</h3>
+       <p class="editorial-text mb-6" style="font-size: 15px; color: var(--gray-800);">Premium spa brand repositioning with luxury-focused digital presence. Editorial content, booking optimization, and local SEO dominance.</p>
+       <div class="flex items-center justify-between">
+        <div class="flex gap-4 text-sm">
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           425%
+          </div>
+          <div style="color: var(--sage);">
+           Local Visibility
+          </div>
+         </div>
+         <div>
+          <div class="font-semibold" style="color: var(--emerald-900);">
+           3.6x
+          </div>
+          <div style="color: var(--sage);">
+           Booking Rate
+          </div>
+         </div>
+        </div>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">View case study</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Process Section - Visual Timeline -->
+   <section id="process" class="py-24 px-6 bg-ivory">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-20">
+      <div class="gold-divider mx-auto"></div>
+      <h2 class="font-display mb-6" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; color: var(--emerald-900);">A methodology built on precision</h2>
+      <p class="editorial-text max-w-3xl mx-auto">Four phases of strategic partnership designed to transform your digital presence from concept to measurable impact.</p>
+     </div><!-- Process Steps -->
+     <div class="space-y-16"><!-- Step 1 -->
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+       <div class="lg:col-span-3">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center shadow-deep" style="background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%);"><span class="text-4xl font-display text-white">1</span>
+        </div>
+       </div>
+       <div class="lg:col-span-9">
+        <h3 class="font-display text-4xl mb-4" style="color: var(--emerald-900);">Discovery &amp; Immersion</h3>
+        <p class="editorial-text mb-6">We begin with deep research—understanding your brand's positioning, audience psychology, competitive landscape, and business objectives. This phase establishes the strategic foundation for everything that follows.</p>
+        <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Brand Audit</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Audience Research</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Competitive Analysis</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Technical Assessment</span>
+        </div>
+       </div>
+      </div><!-- Connector -->
+      <div class="flex justify-center">
+       <div class="w-px h-12" style="background: linear-gradient(180deg, var(--emerald-900) 0%, var(--gold) 100%);"></div>
+      </div><!-- Step 2 -->
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+       <div class="lg:col-span-3">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center shadow-deep" style="background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%);"><span class="text-4xl font-display text-white">2</span>
+        </div>
+       </div>
+       <div class="lg:col-span-9">
+        <h3 class="font-display text-4xl mb-4" style="color: var(--emerald-900);">Strategy &amp; Architecture</h3>
+        <p class="editorial-text mb-6">We map user journeys, define content hierarchies, establish SEO foundations, and architect the information structure. This is where intelligence meets intention—every decision backed by data and strategic thinking.</p>
+        <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">User Journey Mapping</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">SEO Strategy</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Content Architecture</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Technical Planning</span>
+        </div>
+       </div>
+      </div><!-- Connector -->
+      <div class="flex justify-center">
+       <div class="w-px h-12" style="background: linear-gradient(180deg, var(--gold) 0%, var(--emerald-900) 100%);"></div>
+      </div><!-- Step 3 -->
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+       <div class="lg:col-span-3">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center shadow-deep" style="background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%);"><span class="text-4xl font-display text-white">3</span>
+        </div>
+       </div>
+       <div class="lg:col-span-9">
+        <h3 class="font-display text-4xl mb-4" style="color: var(--emerald-900);">Design &amp; Development</h3>
+        <p class="editorial-text mb-6">Creative execution meets technical excellence. We design systems, not just screens—building cohesive digital experiences optimized for performance, accessibility, and conversion. Every component is crafted with precision.</p>
+        <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Design Systems</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Frontend Development</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Performance Optimization</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Quality Assurance</span>
+        </div>
+       </div>
+      </div><!-- Connector -->
+      <div class="flex justify-center">
+       <div class="w-px h-12" style="background: linear-gradient(180deg, var(--emerald-900) 0%, var(--gold) 100%);"></div>
+      </div><!-- Step 4 -->
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+       <div class="lg:col-span-3">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center shadow-deep" style="background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%);"><span class="text-4xl font-display text-white">4</span>
+        </div>
+       </div>
+       <div class="lg:col-span-9">
+        <h3 class="font-display text-4xl mb-4" style="color: var(--emerald-900);">Launch &amp; Optimization</h3>
+        <p class="editorial-text mb-6">Strategic deployment with continuous refinement. We monitor performance, analyze user behavior, optimize conversion paths, and iterate based on real-world data. Excellence is a process, not a destination.</p>
+        <div class="flex flex-wrap gap-3"><span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Performance Monitoring</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">A/B Testing</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">SEO Refinement</span> <span class="px-4 py-2 rounded-full text-sm" style="background: rgba(6, 78, 59, 0.1); color: var(--emerald-900); font-weight: 500;">Ongoing Support</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials - Editorial Layout -->
+   <section class="py-24 px-6 gradient-dark-emerald">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-20">
+      <div class="gold-divider mx-auto"></div>
+      <h2 class="font-display mb-6 text-white" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1;">Trusted by discerning brands</h2>
+      <p class="editorial-text text-white opacity-90 max-w-3xl mx-auto">What happens when strategy, design, and technical excellence converge.</p>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-8"><!-- Testimonial 1 -->
+      <div class="glass-light rounded-3xl p-10 transition-premium hover:bg-white">
+       <div class="flex items-start gap-4 mb-6">
+        <svg class="w-12 h-12 flex-shrink-0" style="color: var(--gold);" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <div>
+         <p class="editorial-text mb-6" style="font-size: 17px; color: var(--charcoal); line-height: 1.7;">"Del Ara Studio didn't just redesign our website—they transformed how we think about our digital presence. The strategic depth, technical excellence, and attention to detail are unmatched. Our organic traffic tripled in six months."</p>
+         <div>
+          <div class="font-semibold mb-1" style="color: var(--emerald-900);">
+           Alexandra Moreau
+          </div>
+          <div class="text-sm" style="color: var(--sage);">
+           Founder &amp; CEO, Lumière Capital
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Testimonial 2 -->
+      <div class="glass-light rounded-3xl p-10 transition-premium hover:bg-white">
+       <div class="flex items-start gap-4 mb-6">
+        <svg class="w-12 h-12 flex-shrink-0" style="color: var(--gold);" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <div>
+         <p class="editorial-text mb-6" style="font-size: 17px; color: var(--charcoal); line-height: 1.7;">"Working with Del Ara feels like partnering with a European design atelier. The sophistication, the restraint, the strategic thinking—it's exactly what our brand needed. They understand luxury at a fundamental level."</p>
+         <div>
+          <div class="font-semibold mb-1" style="color: var(--emerald-900);">
+           Marcus Chen
+          </div>
+          <div class="text-sm" style="color: var(--sage);">
+           Creative Director, Atelier Noir
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Testimonial 3 -->
+      <div class="glass-light rounded-3xl p-10 transition-premium hover:bg-white">
+       <div class="flex items-start gap-4 mb-6">
+        <svg class="w-12 h-12 flex-shrink-0" style="color: var(--gold);" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <div>
+         <p class="editorial-text mb-6" style="font-size: 17px; color: var(--charcoal); line-height: 1.7;">"The technical SEO work they delivered is exceptional. Page speed scores in the high 90s, perfect mobile optimization, and a content strategy that actually drives qualified leads. They set a new standard for our industry."</p>
+         <div>
+          <div class="font-semibold mb-1" style="color: var(--emerald-900);">
+           Sofia Laurent
+          </div>
+          <div class="text-sm" style="color: var(--sage);">
+           VP of Marketing, Vanguard Tech
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Testimonial 4 -->
+      <div class="glass-light rounded-3xl p-10 transition-premium hover:bg-white">
+       <div class="flex items-start gap-4 mb-6">
+        <svg class="w-12 h-12 flex-shrink-0" style="color: var(--gold);" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <div>
+         <p class="editorial-text mb-6" style="font-size: 17px; color: var(--charcoal); line-height: 1.7;">"They brought intelligence and intentionality to every aspect of our digital ecosystem. From brand messaging to technical architecture, every decision was strategic. The results speak for themselves."</p>
+         <div>
+          <div class="font-semibold mb-1" style="color: var(--emerald-900);">
+           Isabelle Beaumont
+          </div>
+          <div class="text-sm" style="color: var(--sage);">
+           Founder, Essence Wellness
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Insights Preview - Magazine Style -->
+   <section id="insights" class="py-24 px-6 bg-cream">
+    <div class="max-w-7xl mx-auto">
+     <div class="flex items-end justify-between mb-12">
+      <div>
+       <div class="gold-divider"></div>
+       <h2 class="font-display" style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; color: var(--emerald-900);">Insights &amp; thinking</h2>
+      </div><button class="btn-secondary">View all articles</button>
+     </div>
+     <div class="masonry-grid"><!-- Article 1 - Featured -->
+      <div class="lg:col-span-2 bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+       <div class="h-80 gradient-emerald-dark flex items-center justify-center">
+        <svg class="w-24 h-24 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+       </div>
+       <div class="p-8">
+        <div class="flex items-center gap-3 mb-4"><span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--gold);">Strategy</span> <span class="text-sm" style="color: var(--sage);">8 min read</span>
+        </div>
+        <h3 class="font-display text-3xl mb-4" style="color: var(--emerald-900);">The quiet luxury approach to web design</h3>
+        <p class="editorial-text mb-6" style="font-size: 15px;">Why restraint, sophistication, and strategic thinking matter more than flashy trends in premium digital experiences.</p>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">Read article</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div><!-- Article 2 -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+       <div class="h-56 gradient-emerald-dark flex items-center justify-center">
+        <svg class="w-20 h-20 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-3 mb-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--gold);">SEO</span> <span class="text-sm" style="color: var(--sage);">6 min read</span>
+        </div>
+        <h3 class="font-display text-2xl mb-3" style="color: var(--emerald-900);">Technical SEO for premium brands</h3>
+        <p class="editorial-text mb-4" style="font-size: 14px;">How to architect search dominance without compromising design integrity or user experience.</p>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">Read article</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div><!-- Article 3 -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+       <div class="h-56 gradient-emerald-dark flex items-center justify-center">
+        <svg class="w-20 h-20 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-3 mb-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--gold);">Design</span> <span class="text-sm" style="color: var(--sage);">5 min read</span>
+        </div>
+        <h3 class="font-display text-2xl mb-3" style="color: var(--emerald-900);">Building design systems that scale</h3>
+        <p class="editorial-text mb-4" style="font-size: 14px;">Creating cohesive, maintainable design languages for enterprise-level digital products.</p>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">Read article</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div><!-- Article 4 -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-premium card-interactive">
+       <div class="h-56 gradient-emerald-dark flex items-center justify-center">
+        <svg class="w-20 h-20 text-white opacity-20" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <div class="flex items-center gap-3 mb-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color: var(--gold);">Performance</span> <span class="text-sm" style="color: var(--sage);">7 min read</span>
+        </div>
+        <h3 class="font-display text-2xl mb-3" style="color: var(--emerald-900);">Page speed as a competitive advantage</h3>
+        <p class="editorial-text mb-4" style="font-size: 14px;">Why performance optimization is non-negotiable for premium digital experiences.</p>
+        <div class="flex items-center gap-2" style="color: var(--gold);"><span class="text-sm font-semibold">Read article</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Final CTA Section -->
+   <section id="contact" class="py-32 px-6 gradient-dark-emerald relative overflow-hidden"><!-- Abstract Elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-10" style="background: radial-gradient(circle, var(--emerald-600) 0%, transparent 70%);"></div>
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+     <div class="gold-divider mx-auto"></div>
+     <h2 class="font-display mb-8 text-white" style="font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05;">Ready to elevate your digital presence?</h2>
+     <p class="editorial-text text-white opacity-90 max-w-3xl mx-auto mb-12" style="font-size: 20px;">Let's discuss how strategic design, technical excellence, and SEO precision can transform your brand's digital ecosystem.</p>
+     <div class="flex flex-col sm:flex-row gap-5 justify-center mb-16"><button class="btn-primary" style="background: white; color: var(--emerald-900); box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);"> Start a project </button> <button class="btn-ghost"> Schedule consultation </button>
+     </div><!-- Contact Details -->
+     <div class="flex flex-col md:flex-row justify-center gap-8 text-white opacity-80">
+      <div class="flex items-center gap-3">
+       <svg class="w-5 h-5" style="color: var(--gold);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+       </svg><span class="text-sm">hello@delarastudio.com</span>
+      </div>
+      <div class="flex items-center gap-3">
+       <svg class="w-5 h-5" style="color: var(--gold);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+       </svg><span class="text-sm">New York &amp; London</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-16 px-6 bg-charcoal">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid lg:grid-cols-12 gap-12 mb-12"><!-- Brand Column -->
+      <div class="lg:col-span-4">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 gradient-emerald-dark rounded-2xl flex items-center justify-center">
+         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div><span id="footer-studio-name" class="text-xl font-display text-white">Del Ara Studio</span>
+       </div>
+       <p class="editorial-text text-white opacity-70 mb-6" style="font-size: 15px;">Luxury web design and strategic SEO for brands that refuse to blend in.</p>
+       <div class="flex gap-4"><a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-white transition-smooth hover:bg-white hover:bg-opacity-20">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-white transition-smooth hover:bg-white hover:bg-opacity-20">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-white transition-smooth hover:bg-white hover:bg-opacity-20">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+         </svg></a>
+       </div>
+      </div><!-- Links Columns -->
+      <div class="lg:col-span-2">
+       <h4 class="font-display text-lg mb-4" style="color: var(--gold);">Services</h4>
+       <ul class="space-y-3">
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Web Design</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Strategic SEO</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Brand Elevation</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Full Service</a></li>
+       </ul>
+      </div>
+      <div class="lg:col-span-2">
+       <h4 class="font-display text-lg mb-4" style="color: var(--gold);">Studio</h4>
+       <ul class="space-y-3">
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">About</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Process</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Philosophy</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Careers</a></li>
+       </ul>
+      </div>
+      <div class="lg:col-span-2">
+       <h4 class="font-display text-lg mb-4" style="color: var(--gold);">Resources</h4>
+       <ul class="space-y-3">
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Case Studies</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Insights</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Free Resources</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Newsletter</a></li>
+       </ul>
+      </div>
+      <div class="lg:col-span-2">
+       <h4 class="font-display text-lg mb-4" style="color: var(--gold);">Legal</h4>
+       <ul class="space-y-3">
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Privacy Policy</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Terms of Service</a></li>
+        <li><a href="#" class="text-white opacity-70 hover:opacity-100 transition-smooth text-sm">Cookie Policy</a></li>
+       </ul>
+      </div>
+     </div><!-- Bottom Bar -->
+     <div class="pt-8 border-t border-white border-opacity-10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-sm text-white opacity-60">© 2024 Del Ara Studio. All rights reserved.</p>
+      <p class="text-sm text-white opacity-60">Crafted with precision in New York &amp; London</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      studio_name: "Del Ara Studio",
+      hero_statement: "We build digital experiences that command attention",
+      hero_subtitle: "Luxury web design and strategic SEO for brands that refuse to blend in. We craft precision, performance, and prestige into every pixel.",
+      cta_primary: "Start a project",
+      cta_secondary: "View case studies",
+      background_color: "#faf8f3",
+      surface_color: "#ffffff",
+      text_color: "#064e3b",
+      primary_action_color: "#047857",
+      secondary_action_color: "#d4af37",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const studioName = config.studio_name || defaultConfig.studio_name;
+      const heroStatement = config.hero_statement || defaultConfig.hero_statement;
+      const heroSubtitle = config.hero_subtitle || defaultConfig.hero_subtitle;
+      const ctaPrimary = config.cta_primary || defaultConfig.cta_primary;
+      const ctaSecondary = config.cta_secondary || defaultConfig.cta_secondary;
+      
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, sans-serif';
+
+      // Update text content
+      document.getElementById('nav-studio-name').textContent = studioName;
+      document.getElementById('footer-studio-name').textContent = studioName;
+      document.getElementById('hero-statement').textContent = heroStatement;
+      document.getElementById('hero-subtitle').textContent = heroSubtitle;
+      document.getElementById('hero-cta-primary').textContent = ctaPrimary;
+      document.getElementById('hero-cta-secondary').textContent = ctaSecondary;
+      document.getElementById('nav-cta').textContent = ctaPrimary;
+
+      // Update colors
+      const mainWrapper = document.querySelector('.main-wrapper');
+      if (mainWrapper) {
+        mainWrapper.style.background = backgroundColor;
+      }
+      
+      const surfaces = document.querySelectorAll('.bg-white, .bg-ivory, .bg-cream');
+      surfaces.forEach(surface => {
+        if (surface.classList.contains('bg-white')) {
+          surface.style.background = surfaceColor;
+        }
+      });
+
+      const headings = document.querySelectorAll('h1, h2, h3, h4');
+      headings.forEach(heading => {
+        if (!heading.classList.contains('text-white')) {
+          heading.style.color = textColor;
+        }
+      });
+
+      const primaryButtons = document.querySelectorAll('.btn-primary');
+      primaryButtons.forEach(btn => {
+        btn.style.background = `linear-gradient(135deg, ${primaryActionColor} 0%, ${textColor} 100%)`;
+      });
+
+      const goldElements = document.querySelectorAll('.gold-accent, [style*="color: var(--gold)"]');
+      goldElements.forEach(el => {
+        el.style.color = secondaryActionColor;
+      });
+
+      // Update fonts
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      
+      // Update font sizes
+      const heroHeadline = document.getElementById('hero-statement');
+      if (heroHeadline) {
+        heroHeadline.style.fontSize = `${baseSize * 3}px`;
+      }
+      
+      const heroSub = document.getElementById('hero-subtitle');
+      if (heroSub) {
+        heroSub.style.fontSize = `${baseSize * 1.25}px`;
+      }
+      
+      const editorialTexts = document.querySelectorAll('.editorial-text');
+      editorialTexts.forEach(text => {
+        text.style.fontSize = `${baseSize}px`;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              config.secondary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["studio_name", config.studio_name || defaultConfig.studio_name],
+        ["hero_statement", config.hero_statement || defaultConfig.hero_statement],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["cta_primary", config.cta_primary || defaultConfig.cta_primary],
+        ["cta_secondary", config.cta_secondary || defaultConfig.cta_secondary]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Update page indicators on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const indicators = document.querySelectorAll('.page-indicator-dot');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      indicators.forEach(indicator => {
+        indicator.classList.remove('active');
+        if (indicator.dataset.page === current) {
+          indicator.classList.add('active');
+        }
+      });
+    });
+
+    // Update nav links on scroll
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b39a24c174e3d14',t:'MTc2NjY3OTI5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
